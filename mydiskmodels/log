@@ -1,0 +1,2 @@
+Trying to reproduce Powell 2017 results, the gas distribution is kept fixed, only dust evolving. The results depend
+heavily on the relation between wavelength and grain size, and how the dustline is defined.

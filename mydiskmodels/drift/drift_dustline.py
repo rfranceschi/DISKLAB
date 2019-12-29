@@ -11,7 +11,7 @@ d = DiskRadialModel(rout=1000 * au, nr=nr)
 
 # Simplified Lynden-Bell & Pringle density distribution
 Rc = 30.0*au
-Sigc = 100
+Sigc = 10**2.5
 gam = 1.0
 d.make_disk_from_simplified_lbp(Sigc, Rc, gam)
 
@@ -33,14 +33,14 @@ ax_start, = ax.loglog(d.r / au, d.dust[0].sigma, label=r'$10^3$ yr')
 th = 0.9
 d.dust[0].compute_mass()
 m_int = d.dust[0].mass
-print('Total mass before = {}'.format(m_int))
+print(f'Initial dust mass = {m_int/MS:.2e} M_S')
 
 integrand = d.dust[0].sigma*2*pi*d.r
 i = 0
 while m_int > th*d.dust[0].mass:
     i = i+1
     m_int = np.trapz(integrand[:-i], d.r[:-i])
-print('Initial dustline at {}'.format(d.r[-i]/au))
+print(f'Initial dustline at {d.r[-i]/au:.0f} au')
 plt.axvline(x=d.r[-i] / au, color='b')
 
 # Drift evolution
@@ -50,18 +50,18 @@ for itime in range(1, ntime + 1):
 
 d.dust[0].compute_mass()
 m_int = d.dust[0].mass
-print('Total mass after = {}'.format(m_int))
+print(f'Final dust mass = {m_int/MS:.2e} M_S')
 
 integrand = d.dust[0].sigma*2*pi*d.r
 i = 0
 while m_int > th*d.dust[0].mass:
     i = i+1
     m_int = np.trapz(integrand[:-i], d.r[:-i])
-print(f'Final dustline at {d.r[-i]/au}')
+print(f'Final dustline at {d.r[-i]/au:.0f} au')
 
 ax_end, = ax.loglog(d.r / au, d.dust[0].sigma, label=r'$5$ Myr')
 plt.axvline(x=d.r[-i] / au, color='orange')
 
 ax.legend()
-plt.title('Dustline drift evolution')
+plt.title(f'Dustline drift evolution, agrain = {agrain:.2e} cm')
 plt.show()

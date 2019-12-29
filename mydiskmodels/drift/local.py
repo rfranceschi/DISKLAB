@@ -1,5 +1,6 @@
 from disklab import natconst as nc
 
+# Modify the built-in drift function to go back in time
 def get_dust_radial_drift_previous_timestep(self, dt, alphamodel=True, fixgas=False, extracond=None,
                                         bcin='zerogradient', bcout='zerogradient'):
     """
