@@ -10,18 +10,18 @@ time = tstart * (tend / tstart)**(np.linspace(0., 1., ntime + 1))  # log spacing
 d = DiskRadialModel(rout=1000 * au, nr=nr)
 
 # Simplified Lynden-Bell & Pringle density distribution
-Rc = 30.0*au
+Rc = 30.0 * au
 Sigc = 10**2.5
 gam = 1.0
 d.make_disk_from_simplified_lbp(Sigc, Rc, gam)
 
 alpha = 0.1  # viscous alpha
-wl = 1.6e-4
-agrain = wl/(2*pi)
+wl = 1.6e-4  # observed wavelength
+agrain = wl/(2*pi)  # corresponding grain size
 d.add_dust(agrain=agrain)
 # d.Sc = 1e10    # switch off mixing by putting Schmidt number to 'infinity'
 
-# Plot
+# Plot initial profile
 
 fig = plt.figure()
 
@@ -63,5 +63,5 @@ ax_end, = ax.loglog(d.r / au, d.dust[0].sigma, label=r'$5$ Myr')
 plt.axvline(x=d.r[-i] / au, color='orange')
 
 ax.legend()
-plt.title(f'Dustline drift evolution, agrain = {agrain:.2e} cm')
+plt.title(f'Dustline drift evolution, a_grain = {agrain:.2e} cm')
 plt.show()
