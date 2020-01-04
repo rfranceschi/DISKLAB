@@ -24,7 +24,6 @@
   <component name="ProjectId" id="1VcAkGi0cRSzROhMFE2Cx76D3B5" />
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -118,6 +117,9 @@
       <module name="DISKLAB-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$USER_HOME$/.conda/envs/test/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mydiskmodels/viscous" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -156,7 +158,8 @@
       <workItem from="1577611413101" duration="11772000" />
       <workItem from="1577631660316" duration="3054000" />
       <workItem from="1577965256967" duration="776000" />
-      <workItem from="1578046832769" duration="1917000" />
+      <workItem from="1578046832769" duration="2149000" />
+      <workItem from="1578148486755" duration="1693000" />
     </task>
     <task id="LOCAL-00001" summary="Rename drift_singledust.py -&gt; drift_evolution_singledust.py and add comments">
       <created>1577614415797</created>

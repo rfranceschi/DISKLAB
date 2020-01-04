@@ -11,14 +11,15 @@ d = DiskRadialModel(rout=1000 * au, nr=nr)
 
 # Simplified Lynden-Bell & Pringle density distribution
 Rc = 30.0 * au
-Sigc = 10**2.5
+Sigc = 175
 gam = 1.0
 d.make_disk_from_simplified_lbp(Sigc, Rc, gam)
 
 alpha = 0.1  # viscous alpha
-wl = 1.6e-4  # observed wavelength
+wl = 0.087  # observed wavelength
 agrain = wl/(2*pi)  # corresponding grain size
-d.add_dust(agrain=agrain)
+dtg = 0.001  # dust to gas ratio
+d.add_dust(agrain=agrain, dtg=dtg)
 # d.Sc = 1e10    # switch off mixing by putting Schmidt number to 'infinity'
 
 # Plot initial profile
@@ -30,7 +31,7 @@ ax = plt.axes()
 ax_start, = ax.loglog(d.r / au, d.dust[0].sigma, label=r'$10^3$ yr')
 
 # Initial dust line at an arbitrary total mass threshold
-th = 0.9
+th = 0.95
 d.dust[0].compute_mass()
 m_int = d.dust[0].mass
 print(f'Initial dust mass = {m_int/MS:.2e} M_S')
